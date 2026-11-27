@@ -32,10 +32,11 @@ function escapeHtml(str) {
 export function renderLayout({ title, description, path, content, token, jsonLd }) {
   const fullTitle = title === SITE.name ? title : `${title} — ${SITE.name}`;
   const canonical = `${SITE.url}${path}`;
-  const navHtml = NAV.map(
-    (item) =>
-      `<a href="${item.path}"${item.path === path ? ' aria-current="page"' : ""}>${item.label}</a>`
-  ).join("");
+  const navLink = (item) =>
+      `<a href="${item.path}"${item.path === path ? ' aria-current="page"' : ""}>${item.label}</a>`;
+  // Home stays in the header; About/Privacy/Cookies/Terms live in the footer.
+  const navHtml = NAV.filter((item) => item.path === "/").map(navLink).join("");
+  const footerNavHtml = NAV.filter((item) => item.path !== "/").map(navLink).join("");
 
   const tokenMeta = token
     ? `<meta name="chart-lab-token" content="${escapeHtml(token)}">`
@@ -129,6 +130,7 @@ export function renderLayout({ title, description, path, content, token, jsonLd 
 
   <footer class="site-footer">
     <div class="container">
+      <nav class="footer-links footer-legal" aria-label="Footer navigation">${footerNavHtml}</nav>
       <p>© ${new Date().getFullYear()} ${SITE.name}. All rights reserved.</p>
       <p class="footer-links">
         <a href="${SITE.githubUrl}" rel="noopener">GitHub</a>
