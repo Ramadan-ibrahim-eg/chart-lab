@@ -108,9 +108,8 @@ main.container { padding-top: 2rem; padding-bottom: 2rem; }
 }
 .footer-links a { color: #116782; text-decoration: none; }
 .footer-links a:hover { text-decoration: underline; }
-.footer-links a + a { margin-left: 1rem; }
-.footer-legal { margin: 0 0 0.75rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1rem; }
-.footer-legal a + a { margin-left: 0; }
+.footer-links a { display: inline-block; margin: 0.25rem 0.75rem; }
+.footer-legal { margin: 0 0 0.5rem; }
 
 /* --- Buttons --- */
 .btn {
