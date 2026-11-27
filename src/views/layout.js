@@ -94,7 +94,7 @@ export function renderLayout({ title, description, path, content, token, jsonLd 
   <link rel="manifest" href="/manifest.json">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=2">
   <script src="/theme.js"></script>
 
   ${tokenMeta}
